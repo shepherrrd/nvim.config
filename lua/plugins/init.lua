@@ -17,7 +17,11 @@ local default_plugins = {
     branch = "v2.0",
     lazy = false,
   },
-
+{
+  'mrcjkb/rustaceanvim',
+  version = '^6', -- Recommended
+  lazy = false, -- This plugin is already lazy
+},
   {
     "NvChad/nvterm",
     init = function()

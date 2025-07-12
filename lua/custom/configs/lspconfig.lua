@@ -19,6 +19,23 @@ lspconfig.gopls.setup {
     },
   },
 }
+
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "python" },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "workspace",
+        typeCheckingMode = "basic", -- or "strict"
+      }
+    }
+  }
+}
+
 lspconfig.omnisharp.setup {
   on_attach = on_attach,
   capabilities = capabilities,

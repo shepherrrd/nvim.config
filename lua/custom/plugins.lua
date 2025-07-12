@@ -5,10 +5,52 @@ local plugins = {
       ensure_installed = {
         "gopls",
         "typescript-language-server",
-        "omnisharp"
+        "omnisharp",
+        "pyright",
+        "ruff",
+        "black",
+        "isort"
       },
     },
   },
+  {
+  
+    "rmagatti/goto-preview",
+    event = "LspAttach",
+    config = function()
+      require("goto-preview").setup({
+        width = 100,
+        height = 20,
+        default_mappings = true, -- sets gpd, gpi, etc.
+      })
+    end,
+  },
+
+
+  {
+    "simrat39/symbols-outline.nvim",
+    cmd = { "SymbolsOutline", "SymbolsOutlineOpen" },
+    keys = {
+      { "<leader>cs", "<cmd>SymbolsOutline<CR>", desc = "Symbols Outline" },
+    },
+    config = true,
+  },
+
+  
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-telescope/telescope-symbols.nvim",
+    },
+    keys = {
+      { "gr", "<cmd>Telescope lsp_references<CR>", desc = "LSP References" },
+      { "gd", "<cmd>Telescope lsp_definitions<CR>", desc = "LSP Definitions" },
+      { "gi", "<cmd>Telescope lsp_implementations<CR>", desc = "LSP Implementations" },
+      { "<leader>ds", "<cmd>Telescope lsp_document_symbols<CR>", desc = "Document Symbols" },
+      { "<leader>ws", "<cmd>Telescope lsp_workspace_symbols<CR>", desc = "Workspace Symbols" },
+    },
+  },
+
   {
     "neovim/nvim-lspconfig",
     config = function()
