@@ -123,6 +123,27 @@ local plugins = {
       vim.cmd [[silent! GoInstallDeps]]
     end,
   },
+  
+  -- Image viewer that works reliably with iTerm2
+  {
+    "princejoogie/chafa.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "m00qek/baleia.nvim"
+    },
+    config = function()
+      require("chafa").setup({
+        render = {
+          min_padding = 5,
+          show_label = true,
+        },
+        events = {
+          update_on_nvim_resize = true,
+        },
+      })
+    end,
+  },
 }
 
 return plugins
